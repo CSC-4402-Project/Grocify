@@ -18,10 +18,10 @@ conn = mysql.connector.connect(
 ```
 
 4. In your VSCode Terminal, we use Anaconda to create and activate a virtual environment, here are the commands: 
-conda create --name pyqt_env
-conda activate pyqt_env
+- conda create --name pyqt_env
+- conda activate pyqt_env
 
 5. After activating the virtual environment, please type these commands:
-python data_generation.py
-mysql -u root -p < test.session.sql
-python main.py
+- python data_generation.py
+- mysql -u root -p < test.session.sql
+- python main.py
