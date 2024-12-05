@@ -14,9 +14,9 @@ conn = mysql.connector.connect(
     user="",
     password="",
     database="test"
-)
+)```python
 
-'Please fill in " " with the details you configured in SQLTools.'
+Please fill in " " with the details you configured in SQLTools.
 
 4. In your VSCode Terminal, we use Anaconda to create and activate a virtual environment, here are the commands: 
 conda create --name pyqt_env
