@@ -14,7 +14,7 @@ conn = mysql.connector.connect(
     user="",
     password="",
     database="test"
-)
+)```
 
 
 
