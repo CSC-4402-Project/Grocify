@@ -11,10 +11,10 @@ CREATE TABLE IF NOT EXISTS items (
 
 SELECT * FROM items;
 
-SELECT * FROM items WHERE market_name = 'Calandro''s Supermarket';
+SELECT * FROM items WHERE item_id = 3;
 
 SELECT * FROM items WHERE department = 'Meats & Poultry';
 
-UPDATE items SET price = 5.00 WHERE item_name = 'Banana';
+UPDATE items SET price = 5.00 WHERE item_name = 'Turkey Sandwich';
 
 DELETE FROM items WHERE item_id = 1;
