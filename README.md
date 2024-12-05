@@ -8,12 +8,12 @@ We use PyQT5, Vscode, SQLTools MySQL/MariaDB/TiDB, SQLTools Extension, Anaconda 
 Fill in the details for your root username, password. For database name, please type test (we use test for our database name). Then, save the connection.
 Also, in the **data_generation.py** file, please update the following code with your database details:
 
-"conn = mysql.connector.connect(
+"""conn = mysql.connector.connect(
     host="localhost",
     user="",
     password="",
     database="test"
-)"
+)
 Please fill in " " with the details you configured in SQLTools.
 
 4. In your VSCode Terminal, we use Anaconda to create and activate a virtual environment, here are the commands: 
