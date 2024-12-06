@@ -1,4 +1,4 @@
-from PyQt5 import QtCore, QtGui, QtWidgets 
+from PyQt5 import QtCore, QtGui, QtWidgets
 import mysql.connector
 from mysql.connector import Error
 
@@ -46,7 +46,7 @@ class Ui_MainWindow(object):
 
         self.Database = QtWidgets.QTableWidget()
         self.Database.setColumnCount(6)
-        self.Database.setHorizontalHeaderLabels(["Item ID", "Item Name", "Market Name", "Department", "Aisle Location", "Price"])
+        self.Database.setHorizontalHeaderLabels(["Item ID", "Item Name", "Supplier", "Department", "Aisle Location", "Price"])
         self.Database.horizontalHeader().setStretchLastSection(True)
         self.main_layout.addWidget(self.Database)
 
@@ -68,15 +68,15 @@ class Ui_MainWindow(object):
         self.left_layout = QtWidgets.QGridLayout()
         self.Item = QtWidgets.QLabel("Item")
         self.Item_Line = QtWidgets.QLineEdit()
-        self.Market = QtWidgets.QLabel("Market Name")
-        self.Market_Name_Line = QtWidgets.QLineEdit()
+        self.Supplier = QtWidgets.QLabel("Supplier Name")
+        self.Supplier_Name_Line = QtWidgets.QLineEdit()
         self.Department = QtWidgets.QLabel("Department")
         self.Department_List = QtWidgets.QComboBox()
         self.Department_List.addItems(["Produce", "Deli", "Bakery", "Meats & Poultry", "Seafood", "Dairy", "Frozen Foods", "Canned & Packaged Goods", "Beverages", "Snacks", "International Foods", "Bulk Foods", "Organic & Natural", "Seasonal Items"])
         self.left_layout.addWidget(self.Item, 0, 0)
         self.left_layout.addWidget(self.Item_Line, 0, 1)
-        self.left_layout.addWidget(self.Market, 1, 0)
-        self.left_layout.addWidget(self.Market_Name_Line, 1, 1)
+        self.left_layout.addWidget(self.Supplier, 1, 0)
+        self.left_layout.addWidget(self.Supplier_Name_Line, 1, 1)
         self.left_layout.addWidget(self.Department, 2, 0)
         self.left_layout.addWidget(self.Department_List, 2, 1)
 
@@ -133,13 +133,13 @@ class Ui_MainWindow(object):
             return
         try:
             query = """
-            INSERT INTO items (item_id, item_name, market_name, department, aisle_location, price)
+            INSERT INTO items (item_id, item_name, supplier_name, department, aisle_location, price)
             VALUES (%s, %s, %s, %s, %s, %s)
             """
             values = (
                 self.Item_ID_Line.text(), 
                 self.Item_Line.text(),
-                self.Market_Name_Line.text(),
+                self.Supplier_Name_Line.text(),
                 self.Department_List.currentText(),
                 self.Aisle_Location_List.currentText(),
                 self.Price_Line.text(),
@@ -157,7 +157,7 @@ class Ui_MainWindow(object):
         result = self.cursor.fetchone()
         if result:
             self.Item_Line.setText(result[1])
-            self.Market_Name_Line.setText(result[2])
+            self.Supplier_Name_Line.setText(result[2])
             self.Department_List.setCurrentText(result[3])
             self.Aisle_Location_List.setCurrentText(result[6])
             self.Price_Line.setText(str(result[5]))
@@ -170,12 +170,12 @@ class Ui_MainWindow(object):
             return
 
         query = """
-        UPDATE items SET item_name=%s, market_name=%s, department=%s, aisle_location=%s, price=%s 
+        UPDATE items SET item_name=%s, supplier_name=%s, department=%s, aisle_location=%s, price=%s 
         WHERE item_id=%s
         """
         values = (
             self.Item_Line.text(),
-            self.Market_Name_Line.text(),
+            self.Supplier_Name_Line.text(),
             self.Department_List.currentText(),
             self.Aisle_Location_List.currentText(),
             self.Price_Line.text(),
@@ -212,23 +212,24 @@ class Ui_MainWindow(object):
     def clear_inputs(self):
         self.Item_Line.clear()
         self.Item_ID_Line.clear()
-        self.Market_Name_Line.clear()
+        self.Supplier_Name_Line.clear()
         self.Price_Line.clear()
         self.Department_List.setCurrentIndex(0)
         self.Aisle_Location_List.setCurrentIndex(0)
 
     def load_data(self):
         try:
-            self.cursor.execute("SELECT item_id, item_name, market_name, department, aisle_location, price FROM items")
+            self.cursor.execute("SELECT item_id, item_name, supplier_name, department, aisle_location, price FROM items")
             rows = self.cursor.fetchall()
             self.Database.setRowCount(0)
             for row in rows:
                 row_position = self.Database.rowCount()
                 self.Database.insertRow(row_position)
-                for col, value in enumerate(row):
-                    self.Database.setItem(row_position, col, QtWidgets.QTableWidgetItem(str(value)))
+                for column, value in enumerate(row):
+                    self.Database.setItem(row_position, column, QtWidgets.QTableWidgetItem(str(value)))
         except Error as e:
-            QtWidgets.QMessageBox.critical(None, "Database Error", f"Error: {e}")
+            print(f"Error loading data: {e}")
+
 
 
 if __name__ == "__main__":
