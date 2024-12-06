@@ -1,4 +1,4 @@
-We use PyQT5, Vscode, SQLTools MySQL/MariaDB/TiDB, SQLTools Extension, Anaconda Virtual Environment, Terminal, Mysql Workench.
+We use MacOS, PyQT5, Vscode, SQLTools MySQL/MariaDB/TiDB, SQLTools Extension, Anaconda Virtual Environment, Terminal, Mysql Workench.
 
 1. Please download and install these extensions from the VSCode marketplace:
 - **SQLTools MySQL/MariaDB/TiDB**
@@ -20,6 +20,8 @@ conn = mysql.connector.connect(
 3. In your VSCode Terminal, we use Anaconda to create and activate a virtual environment, here are the commands: 
 - conda create --name pyqt_env
 - conda activate pyqt_env
+- pip install pyqt5
+- pip install mysql-connector-python
 
 4. After activating the virtual environment, please type these commands:
 - python data_generation.py
