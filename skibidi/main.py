@@ -31,7 +31,7 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.main_layout = QtWidgets.QVBoxLayout(self.centralwidget)
 
-        self.Title = QtWidgets.QLabel("Skibidi Market", self.centralwidget)
+        self.Title = QtWidgets.QLabel("Grocify", self.centralwidget)
         self.Title.setFont(QtGui.QFont("Comic Sans MS", 30))
         self.Title.setAlignment(QtCore.Qt.AlignCenter)
         self.main_layout.addWidget(self.Title)
@@ -125,7 +125,7 @@ class Ui_MainWindow(object):
             print(f"MySQL Connection Error: {e}")
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle("Skibidi Market")
+        MainWindow.setWindowTitle("Grocify")
 
     def add_item(self):
         if not self.Item_Line.text() or not self.Price_Line.text() or not self.Item_ID_Line.text():
