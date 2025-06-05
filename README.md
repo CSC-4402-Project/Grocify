@@ -1,4 +1,5 @@
 We developed a desktop inventory management application named Grocify using PyQt5 on macOS. The development environment includes VS Code, Anaconda virtual environment, and Terminal. For database management, we used MySQL accessed via SQLTools MySQL/MariaDB/TiDB extension in VS Code as well as MySQL Workbench.
+![image](https://github.com/user-attachments/assets/2d2f52ac-9055-4271-b41e-8319f2469801)
 
 1. Please download and install these extensions from the VSCode marketplace:
 - **SQLTools MySQL/MariaDB/TiDB**
