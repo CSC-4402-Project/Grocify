@@ -9,7 +9,6 @@ conn = mysql.connector.connect(
 )
 cursor = conn.cursor()
 
-
 items = [
     ("Banana", "Calandro's Supermarket", "Produce", "A1", 0.50),
     ("Turkey Sandwich", "Anthony's Italian Deli", "Deli", "B2", 8.50),
